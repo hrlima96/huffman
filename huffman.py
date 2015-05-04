@@ -6,6 +6,7 @@ class Huffman:
      
     contador_letras = {letra: 0 for letra in alfabeto}
     lista = []
+    lista_final = []
      
     def gerar(self, texto):
     	for letra in texto:
@@ -14,9 +15,17 @@ class Huffman:
     
         self.lista = sorted(self.contador_letras.items(), key = operator.itemgetter(1))
         
-    	
-        print self.contador_letras
-    	print self.lista
+        for i in range(len(self.lista)):
+            if self.lista[i][1] != 0:
+                self.lista_final.append(self.lista[i])
+
+        while len(self.lista_final) > 1:
+            s0 = min(self.lista_final)
+            self.lista_final.pop(self.lista_final.index(min(self.lista_final)))
+            s1 = min(self.lista_final)
+            self.lista_final.pop(self.lista_final.index(min(self.lista_final)))
+            print self.lista_final
+
 
      
      
