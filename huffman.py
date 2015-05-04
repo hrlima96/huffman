@@ -1,3 +1,5 @@
+import operator
+
 alfabeto = "abcdefghijklmnopqrstuvwxyz"
      
 class Huffman:
@@ -9,17 +11,14 @@ class Huffman:
     	for letra in texto:
     		if letra != " ":
     			self.contador_letras[letra] += 1
-    			
-    	while max(self.contador_letras.values()) != 0:
-    		maior = max(self.contador_letras.values())
-    		
-    		for key in self.contador_letras.keys():
-    			if self.contador_letras[key] == maior:
-    				self.lista.append(key)
-    				
+    
+        self.lista = sorted(self.contador_letras.items(), key = operator.itemgetter(1))
+        
+    	
+        print self.contador_letras
     	print self.lista
-    	print self.contador_letras
+
      
      
 x = Huffman()
-x.gerar("aaaaabbbccc")
+x.gerar("aaaaabbbccczzz")
